@@ -15,24 +15,19 @@ import javax.swing.JOptionPane;
  *
  * @author dell
  */
-public class login extends javax.swing.JFrame{
+public abstract class login extends javax.swing.JFrame {
+
     protected JCTextField txt_username;
     protected JCTextField txt_password;
 
-
-    
+    protected abstract String getquery();
 
     public login() {
-        // Initialize components if needed
-       txt_username = new JCTextField();
-        txt_password = new JCTextField();
     }
+
     public boolean validateLogin() {
         String name = txt_username.getText();
-                String password = txt_password.getText();
-
-        
-       
+        String password = txt_password.getText();
 
         if (name.equals("")) {
             JOptionPane.showMessageDialog(this, "please enter username");
@@ -50,11 +45,12 @@ public class login extends javax.swing.JFrame{
     public void login() {
         String name = txt_username.getText();
         String password = txt_password.getText();
+        String query = getquery();
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library_management", "root", "unknown1695");
-            PreparedStatement pst = con.prepareStatement("select * from admins where username = ? and password = ?");
+            PreparedStatement pst = con.prepareStatement(query);
 
             pst.setString(1, name);
             pst.setString(2, password);
@@ -62,12 +58,10 @@ public class login extends javax.swing.JFrame{
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 JOptionPane.showMessageDialog(this, "login successful");
-                AdminPage adminlogin = new AdminPage();
-                adminlogin.setVisible(true);
-                this.dispose();
+                afterlogin();
 
             } else {
-                JOptionPane.showMessageDialog(this, "incorrect username or password");            
+                JOptionPane.showMessageDialog(this, "incorrect username or password");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,4 +69,7 @@ public class login extends javax.swing.JFrame{
 
     }
 
+    protected void afterlogin() {
+
+    }
 }

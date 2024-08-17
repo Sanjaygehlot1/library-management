@@ -16,8 +16,23 @@ public class adminloginpage extends login {
      */
     public adminloginpage() {
         initComponents();
+        // Ensure these components are the same as in the parent class
+        super.txt_username = this.txt_username;
+        super.txt_password = this.txt_password;
     }
-      
+
+    @Override
+    protected String getquery() {
+        return "SELECT * FROM admins WHERE USERNAME = ? AND PASSWORD = ?";
+    }
+
+    @Override
+    protected void afterlogin() {
+        AdminPage admindashboard = new AdminPage();
+        admindashboard.setVisible(true);
+        dispose();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,7 +168,7 @@ public class adminloginpage extends login {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rSMaterialButtonRectangle3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle3ActionPerformed
-        SIGNUP_PAGE signup= new SIGNUP_PAGE();
+        SIGNUP_PAGE signup = new SIGNUP_PAGE();
         signup.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_rSMaterialButtonRectangle3ActionPerformed

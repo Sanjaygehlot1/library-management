@@ -4,69 +4,34 @@
  */
 package jframe;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author dell
  */
-public class Loginpage extends javax.swing.JFrame {
+public class Loginpage extends login {
 
     /**
-     * Creates new form Login page
+     * Creates new form admin login page
      */
     public Loginpage() {
         initComponents();
-    }
-    //validation
-    public boolean validateLogin() {
-        String name = txt_username.getText();
-        String password = txt_password.getText();
-
-        if (name.equals("")) {
-            JOptionPane.showMessageDialog(this, "please enter username");
-            return false;
-        }
-        if (password.equals("")) {
-            JOptionPane.showMessageDialog(this, "please enter password");
-            return false;
-        }
-
-        return true;
+        // Assign text fields to the parent class variables
+        super.txt_username = this.txt_username;
+        super.txt_password = this.txt_password;
     }
 
-    //verify creds
-    public void login() {
-        String name = txt_username.getText();
-        String password = txt_password.getText();
-
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library_management", "root", "unknown1695");
-            PreparedStatement pst = con.prepareStatement("select * from students where name = ? and password = ?");
-
-            pst.setString(1, name);
-            pst.setString(2, password);
-
-            ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(this, "login successful");
-                Studentpage home = new Studentpage();
-                home.setVisible(true);
-                this.dispose();
-
-            } else {
-                JOptionPane.showMessageDialog(this, "incorrect username or password");            
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    @Override
+    protected String getquery() {
+        return "select * from students where name= ? and password=?";
     }
+
+    @Override
+    protected void afterlogin() {
+        Studentpage studentdashboard = new Studentpage();
+        studentdashboard.setVisible(true);
+        dispose();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -183,15 +148,15 @@ public class Loginpage extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_usernameFocusLost
 
     private void rSMaterialButtonRectangle3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle3ActionPerformed
-        SIGNUP_PAGE signup= new SIGNUP_PAGE();
-         signup.setVisible(true);
-                this.dispose();
+        SIGNUP_PAGE signup = new SIGNUP_PAGE();
+        signup.setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_rSMaterialButtonRectangle3ActionPerformed
 
     private void rSMaterialButtonRectangle2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle2ActionPerformed
-         if (validateLogin()) {
-           login();
+        if (validateLogin()) {
+            login();
         }
 
     }//GEN-LAST:event_rSMaterialButtonRectangle2ActionPerformed

@@ -22,95 +22,95 @@ public class SIGNUP_PAGE extends javax.swing.JFrame {
      */
     public SIGNUP_PAGE() {
         initComponents();
-    }    
-    public void insertsignupdetails(){
-        String name=txt_username.getText();
-        String password=txt_password.getText();
-        String email=txt_email.getText();
-        String contact=txt_contact.getText();
-        
+    }
+
+    public void insertsignupdetails() {
+        String name = txt_username.getText();
+        String password = txt_password.getText();
+        String email = txt_email.getText();
+        String contact = txt_contact.getText();
+
         try {
-         Connection con =DBconnection.getConnection();
+            Connection con = DBconnection.getConnection();
             String sql = "insert into students(name,password,email,contact) values(?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
-            
+
             pst.setString(1, name);
             pst.setString(2, password);
             pst.setString(3, email);
             pst.setString(4, contact);
-            
+
             int updatedRowCount = pst.executeUpdate();
-            
+
             if (updatedRowCount > 0) {
                 JOptionPane.showMessageDialog(this, "Recorded Inserted Successfully");
                 Loginpage page = new Loginpage();
                 page.setVisible(true);
                 dispose();
-                               }
-            else{
-                JOptionPane.showMessageDialog(this, "Insertion Failed");            }
+            } else {
+                JOptionPane.showMessageDialog(this, "Insertion Failed");
+            }
 
         } catch (Exception e) {
-                e.printStackTrace();
+            e.printStackTrace();
         }
 
     }
     // signup validation
-    
-     public boolean validateSignup(){
+
+    public boolean validateSignup() {
         String name = txt_username.getText();
         String password = txt_password.getText();
         String email = txt_email.getText();
         String contact = txt_contact.getText();
-        
+
         if (name.equals("")) {
             JOptionPane.showMessageDialog(this, "please enter username");
             return false;
         }
-        
+
         if (password.equals("")) {
             JOptionPane.showMessageDialog(this, "please enter password");
             return false;
         }
-        
+
         if (email.equals("") || !email.matches("^.+@.+\\..+$")) {
             JOptionPane.showMessageDialog(this, "please enter valid email");
             return false;
         }
-        
-         if (contact.equals("")) {
+
+        if (contact.equals("")) {
             JOptionPane.showMessageDialog(this, "please enter contact number");
             return false;
         }
-        
+
         return true;
     }
-    
-    //check duplicate users
-   public boolean checkDuplicateUser(){
-     String name = txt_username.getText();
-     boolean isExist = false;
-     
-     try {
-         Class.forName("com.mysql.cj.jdbc.Driver");
-         Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library_management", "root", "unknown1695");
-        
-         PreparedStatement pst = con.prepareStatement("select * from students where name = ?");
-         pst.setString(1, name);
-         ResultSet rs = pst.executeQuery();
-         if (rs.next()) {
-             isExist = true;
-         } else {
-             isExist = false;
-         }
-         
-     } catch (Exception e) {
-         e.printStackTrace();
-     }
-     return isExist;
- }
 
-   
+    //check duplicate users
+    public boolean checkDuplicateUser() {
+        String name = txt_username.getText();
+        boolean isExist = false;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library_management", "root", "unknown1695");
+
+            PreparedStatement pst = con.prepareStatement("select * from students where name = ?");
+            pst.setString(1, name);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                isExist = true;
+            } else {
+                isExist = false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return isExist;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -270,14 +270,14 @@ public class SIGNUP_PAGE extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rSMaterialButtonRectangle3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle3ActionPerformed
-     if (validateSignup()) {
-       if (!checkDuplicateUser()) {
-           
-            insertsignupdetails();
-        } else {
-            JOptionPane.showMessageDialog(this, "Username Already Exists");
+        if (validateSignup()) {
+            if (!checkDuplicateUser()) {
+
+                insertsignupdetails();
+            } else {
+                JOptionPane.showMessageDialog(this, "Username Already Exists");
+            }
         }
-    }
     }//GEN-LAST:event_rSMaterialButtonRectangle3ActionPerformed
 
     private void rSMaterialButtonRectangle2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle2ActionPerformed
@@ -287,7 +287,7 @@ public class SIGNUP_PAGE extends javax.swing.JFrame {
     }//GEN-LAST:event_rSMaterialButtonRectangle2ActionPerformed
 
     private void rSMaterialButtonRectangle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle1ActionPerformed
-        adminloginpage adminlogin= new adminloginpage();
+        adminloginpage adminlogin = new adminloginpage();
         adminlogin.setVisible(true);
     }//GEN-LAST:event_rSMaterialButtonRectangle1ActionPerformed
 
@@ -305,15 +305,16 @@ public class SIGNUP_PAGE extends javax.swing.JFrame {
 
     private void txt_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCTextField3ActionPerformed
         // 
-        
-        
+
+
     }//GEN-LAST:event_jCTextField3ActionPerformed
 
     private void txt_usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_usernameFocusLost
-     if (checkDuplicateUser() == true) {
-                JOptionPane.showMessageDialog(this, "Username Already Exist");
+        if (checkDuplicateUser() == true) {
+            JOptionPane.showMessageDialog(this, "Username Already Exist");
     }//GEN-LAST:event_txt_usernameFocusLost
     }
+
     /**
      * @param args the command line arguments
      */

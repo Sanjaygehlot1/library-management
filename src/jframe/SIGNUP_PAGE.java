@@ -137,7 +137,7 @@ public class SIGNUP_PAGE extends javax.swing.JFrame {
         rSMaterialButtonRectangle1 = new rojerusan.RSMaterialButtonRectangle();
         rSMaterialButtonRectangle2 = new rojerusan.RSMaterialButtonRectangle();
         rSMaterialButtonRectangle3 = new rojerusan.RSMaterialButtonRectangle();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -258,12 +258,11 @@ public class SIGNUP_PAGE extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 410, 560));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pexels-itfeelslikefilm-590493 (1).jpg"))); // NOI18N
-        jLabel2.setMaximumSize(new java.awt.Dimension(1600, 830));
-        jLabel2.setMinimumSize(new java.awt.Dimension(1600, 830));
-        jLabel2.setPreferredSize(new java.awt.Dimension(1600, 830));
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 780));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pexels-itfeelslikefilm-590493 (1).jpg"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(1600, 830));
+        jLabel1.setMinimumSize(new java.awt.Dimension(1600, 830));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1600, 830));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 750));
 
         setSize(new java.awt.Dimension(1389, 788));
         setLocationRelativeTo(null);
@@ -351,9 +350,9 @@ public class SIGNUP_PAGE extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;

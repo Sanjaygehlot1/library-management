@@ -1,0 +1,55 @@
+package project
+import java.sql.*;
+
+public clacc ConnectionProvider{
+public static Connection getCon()
+{
+try
+{
+Class.forName("com.mysql.jdbc.Driver");
+Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/lms","root","unknown1282");
+return con;
+}
+catch(Exception e)
+{
+System.out.pintln(e);
+return null;
+}
+}
+}
+
+
+
+
+or
+
+
+
+
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class ConnectionProvider {
+    // JDBC URL, username, and password for your database
+    private static final String URL = "jdbc:mysql://localhost:3306/yourdatabase";
+    private static final String USER = "username";
+    private static final String PASSWORD = "password";
+
+    // Method to establish and return a database connection
+    public static Connection getCon() {
+        Connection con = null;
+        try {
+            // Load the JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver"); // Adjust if using a different driver
+            // Create a connection to the database
+            con = DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(); // Print the exception for debugging
+        }
+        return con;
+    }
+}
+

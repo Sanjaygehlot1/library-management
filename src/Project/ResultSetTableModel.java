@@ -1,25 +1,25 @@
 package Project;
+
 import javax.swing.table.AbstractTableModel;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
-/**
- *
- * @author LENOVO
- */
 public class ResultSetTableModel extends AbstractTableModel {
     private List<Object[]> data;
     private String[] columnNames;
 
+    /**
+     * Constructs a table model from the given ResultSet.
+     *
+     * @param resultSet the ResultSet containing data to display in the table.
+     * @throws SQLException if a database access error occurs or this method is called on a closed result set.
+     */
     public ResultSetTableModel(ResultSet resultSet) throws SQLException {
         data = new ArrayList<>();
-        java.sql.ResultSetMetaData metaData = resultSet.getMetaData();
+        ResultSetMetaData metaData = resultSet.getMetaData();
         int columnCount = metaData.getColumnCount();
         columnNames = new String[columnCount];
 

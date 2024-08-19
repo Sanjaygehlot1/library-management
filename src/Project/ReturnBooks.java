@@ -151,16 +151,21 @@ public class ReturnBooks extends javax.swing.JFrame {
         }
 //        Connection con=ConnectionProvider.getCon();
         Statement st=con.createStatement();
-        st.executeUpdate("update issue set Returned='YES' where StudentID='"+studentID+"' and BookID='"+bookID+"'");
-        JOptionPane.showMessageDialog(null,"Book successfully returned");
+      int rowsaffected= st.executeUpdate("update issue set Returned='YES' where StudentID='"+studentID+"' and BookID='"+bookID+"'");
+        
+        if (rowsaffected > 0) {
+        JOptionPane.showMessageDialog(null, "Book successfully returned");
         setVisible(false);
         new ReturnBooks().setVisible(true);
+    } else {
+        JOptionPane.showMessageDialog(null, "No Book Found");
+    }
         
        
     }
     catch(Exception e)
             {
-                JOptionPane.showMessageDialog(null,"No Book Found" );
+                JOptionPane.showMessageDialog(null,"Error" );
             }
      System.out.println("BookID: " + bookID);
 System.out.println("StudentID: " + studentID);

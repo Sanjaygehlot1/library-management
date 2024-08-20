@@ -4,6 +4,8 @@
  */
 package jframe;
 
+import Studentdashboard.Homepage;
+
 /**
  *
  * @author dell
@@ -27,8 +29,8 @@ public class Loginpage extends login {
 
     @Override
     protected void afterlogin() {
-        Studentpage studentdashboard = new Studentpage();
-        studentdashboard.setVisible(true);
+        Homepage studentpage = new Homepage();
+        studentpage.setVisible(true);
         dispose();
     }
 

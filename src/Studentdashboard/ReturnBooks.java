@@ -53,15 +53,17 @@ public class ReturnBooks extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(0, 0));
-        setMinimumSize(new java.awt.Dimension(1600, 830));
+        setLocation(new java.awt.Point(200, 400));
+        setMinimumSize(new java.awt.Dimension(790, 500));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(790, 500));
         setResizable(false);
-        setSize(new java.awt.Dimension(0, 0));
+        setSize(new java.awt.Dimension(1100, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel1.setText("Student ID");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 170, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 170, 40));
 
         jButton1.setBackground(new java.awt.Color(102, 255, 102));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -72,7 +74,7 @@ public class ReturnBooks extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, 140, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 310, 140, 40));
 
         jButton2.setBackground(new java.awt.Color(255, 102, 102));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -83,7 +85,7 @@ public class ReturnBooks extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 130, 40));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 130, 40));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -95,7 +97,7 @@ public class ReturnBooks extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(957, 80, 160, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 160, -1));
 
         jLabel5.setText("jLabel5");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, -10, -1, -1));
@@ -103,40 +105,42 @@ public class ReturnBooks extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel2.setText("Issue Date");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 160, 40));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 160, 40));
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel3.setText("Due Date");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 130, 40));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 130, 40));
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel4.setText("Book ID");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 120, 40));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 120, 40));
 
         txt_issuedate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 0, 0)));
         txt_issuedate.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txt_issuedate.setPlaceholder("Enter Issue Date");
-        getContentPane().add(txt_issuedate, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, -1, -1));
+        getContentPane().add(txt_issuedate, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, -1, -1));
 
         txt_duedate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 0, 0)));
         txt_duedate.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txt_duedate.setPlaceholder("Enter Due Date");
-        getContentPane().add(txt_duedate, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, -1, -1));
+        getContentPane().add(txt_duedate, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, -1, -1));
 
         txt_bookid.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 0, 0)));
         txt_bookid.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txt_bookid.setPlaceholder("Enter Book ID");
-        getContentPane().add(txt_bookid, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, -1, -1));
+        getContentPane().add(txt_bookid, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, -1, -1));
 
         txt_studentid.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 0, 0)));
         txt_studentid.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txt_studentid.setPlaceholder("Enter Student ID");
-        getContentPane().add(txt_studentid, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, -1, -1));
+        getContentPane().add(txt_studentid, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Studentdashboard/bgm.jpg"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 750));
+        jLabel6.setMaximumSize(new java.awt.Dimension(500, 830));
+        jLabel6.setMinimumSize(new java.awt.Dimension(500, 830));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 700));
 
-        setSize(new java.awt.Dimension(1389, 788));
+        setSize(new java.awt.Dimension(1028, 484));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

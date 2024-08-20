@@ -1,7 +1,8 @@
 
-
+package AdminDashboard;
 import java.sql.*;
-import Project.ConnectionProvider;
+import Studentdashboard.ConnectionProvider;
+import Studentdashboard.ConnectionProvider;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
@@ -22,10 +23,11 @@ import net.proteanit.sql.DbUtils;
 public class IssuedBooks extends javax.swing.JFrame {
 
     /**
-     * Creates new form MyBook
+     * 
      */
     public IssuedBooks() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -39,13 +41,13 @@ public class IssuedBooks extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         mybookstable = new rojeru_san.complementos.RSTableMetro();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(325, 125));
+        setUndecorated(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -70,10 +72,6 @@ public class IssuedBooks extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, -1));
 
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-240, -30, -1, -1));
-        jLabel2.getAccessibleContext().setAccessibleName("");
-
         mybookstable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -88,26 +86,47 @@ public class IssuedBooks extends javax.swing.JFrame {
             new String [] {
                 "Book ID", "Student ID", "Name", "Issue Date", "Due Date"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         mybookstable.setColorBackgoundHead(new java.awt.Color(0, 0, 0));
         mybookstable.setColorFilasForeground1(new java.awt.Color(102, 102, 102));
         mybookstable.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         mybookstable.setRowHeight(40);
         mybookstable.setRowMargin(3);
+        mybookstable.getTableHeader().setReorderingAllowed(false);
         mybookstable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mybookstableMouseClicked(evt);
             }
         });
+        mybookstable.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                mybookstableComponentShown(evt);
+            }
+        });
         jScrollPane2.setViewportView(mybookstable);
+        if (mybookstable.getColumnModel().getColumnCount() > 0) {
+            mybookstable.getColumnModel().getColumn(0).setResizable(false);
+            mybookstable.getColumnModel().getColumn(1).setResizable(false);
+            mybookstable.getColumnModel().getColumn(2).setResizable(false);
+            mybookstable.getColumnModel().getColumn(3).setResizable(false);
+            mybookstable.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 640, 370));
 
         jLabel3.setBackground(new java.awt.Color(51, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Project/bgm.jpg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Studentdashboard/bgm.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 500));
 
-        setSize(new java.awt.Dimension(805, 539));
+        setSize(new java.awt.Dimension(791, 532));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -159,6 +178,10 @@ public class IssuedBooks extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mybookstableMouseClicked
 
+    private void mybookstableComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_mybookstableComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mybookstableComponentShown
+
     /**
      * @param args the command line arguments
      */
@@ -198,7 +221,6 @@ public class IssuedBooks extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
     private rojeru_san.complementos.RSTableMetro mybookstable;

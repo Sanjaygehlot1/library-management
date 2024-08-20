@@ -1,4 +1,4 @@
-package Project;
+package Studentdashboard;
 
 import javax.swing.table.AbstractTableModel;
 import java.sql.ResultSet;

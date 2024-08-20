@@ -1,7 +1,9 @@
+package Studentdashboard;
+
 
 
 import java.sql.*;
-import Project.ConnectionProvider;
+import Studentdashboard.ConnectionProvider;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 //import java.sql.DriverManager;
@@ -53,7 +55,6 @@ public class ReturnBooks extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
         setMinimumSize(new java.awt.Dimension(1600, 830));
-        setPreferredSize(new java.awt.Dimension(860, 620));
         setResizable(false);
         setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,7 +65,7 @@ public class ReturnBooks extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(102, 255, 102));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Project/return book png.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Studentdashboard/return book png.png"))); // NOI18N
         jButton1.setText("Return");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,7 +76,7 @@ public class ReturnBooks extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(255, 102, 102));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Project/red-x-mark-transparent-background-3.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Studentdashboard/red-x-mark-transparent-background-3.png"))); // NOI18N
         jButton2.setText("Close");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,7 +88,7 @@ public class ReturnBooks extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Project/search.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Studentdashboard/search.png"))); // NOI18N
         jButton3.setText("Search");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +133,7 @@ public class ReturnBooks extends javax.swing.JFrame {
         txt_studentid.setPlaceholder("Enter Student ID");
         getContentPane().add(txt_studentid, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, -1, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Project/bgm.jpg"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Studentdashboard/bgm.jpg"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 750));
 
         setSize(new java.awt.Dimension(1389, 788));
@@ -195,8 +196,8 @@ System.out.println("StudentID: " + studentID);
             txt_duedate.setEditable(false);
         } else {
             JOptionPane.showMessageDialog(null, "Incorrect StudentID or BookID");
-            setVisible(false);
-            new ReturnBooks().setVisible(true);
+//            setVisible(false);
+//            new ReturnBooks().setVisible(true);
         }
     } catch (Exception e) {   
         JOptionPane.showMessageDialog(null, "Connection Error");

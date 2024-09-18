@@ -3,7 +3,6 @@ package Studentdashboard;
 
 
 import java.sql.*;
-import Studentdashboard.ConnectionProvider;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 //import java.sql.DriverManager;
@@ -62,8 +61,9 @@ public class ReturnBooks extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jLabel1.setText("Student ID");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 170, 40));
+        jLabel1.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel1.setText("Student ID:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 170, 40));
 
         jButton1.setBackground(new java.awt.Color(102, 255, 102));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -97,22 +97,25 @@ public class ReturnBooks extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 160, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 160, 40));
 
         jLabel5.setText("jLabel5");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, -10, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jLabel2.setText("Issue Date");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 160, 40));
+        jLabel2.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel2.setText("Issue Date:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 160, 40));
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jLabel3.setText("Due Date");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 130, 40));
+        jLabel3.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel3.setText("Due Date:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, -1, 40));
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jLabel4.setText("Book ID");
+        jLabel4.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel4.setText("Book ID:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 120, 40));
 
         txt_issuedate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 0, 0)));
@@ -154,7 +157,7 @@ public class ReturnBooks extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Database connection failed.");
             return;
         }
-//        Connection con=ConnectionProvider.getCon();
+
         Statement st=con.createStatement();
       int rowsaffected= st.executeUpdate("update issue set Returned='YES' where StudentID='"+studentID+"' and BookID='"+bookID+"'");
         

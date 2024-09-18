@@ -23,12 +23,12 @@ public class ResultSetTableModel extends AbstractTableModel {
         int columnCount = metaData.getColumnCount();
         columnNames = new String[columnCount];
 
-        // Get column names
+        
         for (int i = 1; i <= columnCount; i++) {
             columnNames[i - 1] = metaData.getColumnName(i);
         }
 
-        // Get rows
+       
         while (resultSet.next()) {
             Object[] rowData = new Object[columnCount];
             for (int i = 1; i <= columnCount; i++) {

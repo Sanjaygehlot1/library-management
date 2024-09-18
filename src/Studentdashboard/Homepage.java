@@ -75,7 +75,7 @@ public class Homepage extends javax.swing.JFrame {
         jPanel7.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 1250, -1, -1));
         jPanel7.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Studentdashboard/shit.jpeg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Studentdashboard/blurredbg.jpeg"))); // NOI18N
         jPanel7.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 630));
 
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 1070, 620));
@@ -111,6 +111,7 @@ public class Homepage extends javax.swing.JFrame {
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 56, 216, -1));
 
         returnbook.setBackground(new java.awt.Color(51, 51, 51));
+        returnbook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Studentdashboard/return book png.png"))); // NOI18N
         returnbook.setText("RETURN BOOK");
         returnbook.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         returnbook.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +124,11 @@ public class Homepage extends javax.swing.JFrame {
         mybooks.setBackground(new java.awt.Color(51, 51, 51));
         mybooks.setText("MY BOOKS");
         mybooks.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        mybooks.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                mybooksMouseEntered(evt);
+            }
+        });
         mybooks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mybooksActionPerformed(evt);
@@ -145,6 +151,11 @@ public class Homepage extends javax.swing.JFrame {
         MyIssuedBooks isb= new MyIssuedBooks();
         isb.setVisible(true);
     }//GEN-LAST:event_mybooksActionPerformed
+
+    private void mybooksMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mybooksMouseEntered
+        
+        
+    }//GEN-LAST:event_mybooksMouseEntered
 
     /**
      * @param args the command line arguments

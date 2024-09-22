@@ -6,7 +6,11 @@ package lms;
 
 /**
  *
+<<<<<<< Updated upstream
  * @author LENOVO
+=======
+ * @author Vignesh Dandu
+>>>>>>> Stashed changes
  */
 public class LMS {
 

@@ -5,7 +5,6 @@ package Studentdashboard;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
-//import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -20,12 +19,15 @@ import java.sql.ResultSet;
  * @author LENOVO
  */
 public class ReturnBooks extends javax.swing.JFrame {
-
+ private String studentId;
     /**
      * Creates new form ReturnBooks
      */
-    public ReturnBooks() {
+    public ReturnBooks(String studentId) {
         initComponents();
+         this.studentId = studentId;  // Correctly assign the passed student ID
+        txt_studentid.setText(studentId);  // Display the student ID in the text field
+        txt_studentid.setEditable(false);
     }
 
     /**
@@ -163,8 +165,10 @@ public class ReturnBooks extends javax.swing.JFrame {
         
         if (rowsaffected > 0) {
         JOptionPane.showMessageDialog(null, "Book successfully returned");
+        
         setVisible(false);
-        new ReturnBooks().setVisible(true);
+        new ReturnBooks(studentId).setVisible(true);
+        
     } else {
         JOptionPane.showMessageDialog(null, "No Book Found");
     }
@@ -175,6 +179,7 @@ public class ReturnBooks extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(null,"Error" );
             }
+    
      System.out.println("BookID: " + bookID);
 System.out.println("StudentID: " + studentID);
 
@@ -243,7 +248,7 @@ System.out.println("StudentID: " + studentID);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ReturnBooks().setVisible(true);
+                new ReturnBooks("36").setVisible(true);
             }
         });
     }

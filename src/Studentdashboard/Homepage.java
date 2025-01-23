@@ -1,9 +1,20 @@
-package Studentdashboard;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+package Studentdashboard;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.util.Date;
+
+
+
 
 /**
  *
@@ -14,9 +25,28 @@ public class Homepage extends javax.swing.JFrame {
     /**
      * Creates new form Homepage
      */
-    public Homepage() {
-        initComponents();
+//    private JLabel stid;
+ private static  String studentId;
+ public static String getStudentId() {
+        return studentId;
     }
+ // Static variable to hold student ID
+    public Homepage(String studentID) {
+        initComponents();
+        setDataToCards();
+        this.studentId=studentID;
+    loadStudentData(); 
+    }
+
+   
+     private void loadStudentData() {
+        if (studentId != null) {
+            stid.setText("  Student ID: " + studentId);  
+        } else {
+            stid.setText("No Student ID Available");
+        }
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,61 +57,93 @@ public class Homepage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel5 = new javax.swing.JPanel();
+        jPanel20 = new javax.swing.JPanel();
+        lbl_issuedBooks = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         returnbook = new rojerusan.RSMaterialButtonRectangle();
-        mybooks = new rojerusan.RSMaterialButtonRectangle();
+        borrow_books = new rojerusan.RSMaterialButtonRectangle();
+        mybooks1 = new rojerusan.RSMaterialButtonRectangle();
+        jPanel15 = new javax.swing.JPanel();
+        logoutbtn = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        stid = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        setMinimumSize(new java.awt.Dimension(1380, 830));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1380, 830));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
+
+        jPanel20.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(0, 0, 0)));
+
+        lbl_issuedBooks.setFont(new java.awt.Font("Segoe UI", 1, 50)); // NOI18N
+        lbl_issuedBooks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Sell_26px.png"))); // NOI18N
+        lbl_issuedBooks.setText("10");
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
+                .addContainerGap(73, Short.MAX_VALUE)
+                .addComponent(lbl_issuedBooks)
+                .addGap(70, 70, 70))
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_issuedBooks)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        jLabel28.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel28.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel28.setText("My Issues:");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel28)
+                    .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(814, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel28)
+                .addGap(27, 27, 27)
+                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(685, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 1050, 850));
+
+        jPanel1.setBackground(new java.awt.Color(173, 216, 230));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         jPanel1.setToolTipText("");
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 50));
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Studentdashboard/red-x-mark-transparent-background-3.png"))); // NOI18N
-        jLabel1.setText("Back");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 30));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 30));
-
-        jPanel4.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Verdana", 3, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Welcome User !");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, -1, -1));
-
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 1070, 30));
-
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel7.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 1250, -1, -1));
-        jPanel7.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, -1));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Studentdashboard/blurredbg.jpeg"))); // NOI18N
-        jPanel7.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 630));
-
-        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 1070, 620));
-
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), java.awt.Color.black));
+        jPanel2.setBackground(new java.awt.Color(50, 50, 50));
+        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+        jPanel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
@@ -95,67 +157,172 @@ public class Homepage extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(73, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 56, 216, -1));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 240, 60));
 
-        returnbook.setBackground(new java.awt.Color(51, 51, 51));
+        returnbook.setBackground(new java.awt.Color(0, 128, 128));
+        returnbook.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         returnbook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Studentdashboard/return book png.png"))); // NOI18N
         returnbook.setText("RETURN BOOK");
+        returnbook.setFocusPainted(false);
         returnbook.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         returnbook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 returnbookActionPerformed(evt);
             }
         });
-        jPanel2.add(returnbook, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 220, -1));
+        jPanel2.add(returnbook, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 220, -1));
 
-        mybooks.setBackground(new java.awt.Color(51, 51, 51));
-        mybooks.setText("MY BOOKS");
-        mybooks.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        mybooks.addMouseListener(new java.awt.event.MouseAdapter() {
+        borrow_books.setBackground(new java.awt.Color(0, 128, 128));
+        borrow_books.setBorder(new javax.swing.border.MatteBorder(null));
+        borrow_books.setText("BORROW BOOKS");
+        borrow_books.setFocusPainted(false);
+        borrow_books.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        borrow_books.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                mybooksMouseEntered(evt);
+                borrow_booksMouseEntered(evt);
             }
         });
-        mybooks.addActionListener(new java.awt.event.ActionListener() {
+        borrow_books.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mybooksActionPerformed(evt);
+                borrow_booksActionPerformed(evt);
             }
         });
-        jPanel2.add(mybooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, -1));
+        jPanel2.add(borrow_books, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 220, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 220, 990));
+        mybooks1.setBackground(new java.awt.Color(0, 128, 128));
+        mybooks1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+        mybooks1.setText("MY BOOKS");
+        mybooks1.setFocusPainted(false);
+        mybooks1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        mybooks1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                mybooks1MouseEntered(evt);
+            }
+        });
+        mybooks1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mybooks1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(mybooks1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 220, -1));
+
+        jPanel15.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel15MouseClicked(evt);
+            }
+        });
+        jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logoutbtn.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        logoutbtn.setForeground(new java.awt.Color(255, 255, 255));
+        logoutbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Exit_26px.png"))); // NOI18N
+        logoutbtn.setText("Logout");
+        logoutbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutbtnMouseClicked(evt);
+            }
+        });
+        jPanel15.add(logoutbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+
+        jPanel2.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 240, 60));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 240, 990));
+
+        jPanel4.setBackground(new java.awt.Color(173, 216, 230));
+        jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Verdana", 3, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setText("Welcome User !");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
+
+        jPanel6.setBackground(new java.awt.Color(0, 0, 0));
+
+        stid.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        stid.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(stid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(stid, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 260, 50));
+
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 30)); // NOI18N
+        jLabel4.setText("X");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, -2, 40, 50));
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 1070, 50));
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void returnbookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnbookActionPerformed
-       ReturnBooks rb= new ReturnBooks();
+       ReturnBooks rb= new ReturnBooks(studentId);
        rb.setVisible(true);
     }//GEN-LAST:event_returnbookActionPerformed
 
-    private void mybooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mybooksActionPerformed
-        MyIssuedBooks isb= new MyIssuedBooks();
-        isb.setVisible(true);
-    }//GEN-LAST:event_mybooksActionPerformed
+    private void borrow_booksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrow_booksActionPerformed
+         Borrow_books borrow = new Borrow_books(studentId);
+         borrow.setVisible(true);
+         
+    }//GEN-LAST:event_borrow_booksActionPerformed
 
-    private void mybooksMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mybooksMouseEntered
-        
-        
-    }//GEN-LAST:event_mybooksMouseEntered
+    private void borrow_booksMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_borrow_booksMouseEntered
+    
+    }//GEN-LAST:event_borrow_booksMouseEntered
+
+    private void mybooks1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mybooks1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mybooks1MouseEntered
+
+    private void mybooks1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mybooks1ActionPerformed
+         MyIssuedBooks issuebk= new MyIssuedBooks(studentId);
+        issuebk.setVisible(true);
+    }//GEN-LAST:event_mybooks1ActionPerformed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        dispose();
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void logoutbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutbtnMouseClicked
+         dispose();
+        Loginpage login = new Loginpage();
+        login.setVisible(true);
+      
+    }//GEN-LAST:event_logoutbtnMouseClicked
+
+    private void jPanel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel15MouseClicked
+           dispose();
+        Loginpage login = new Loginpage();
+        login.setVisible(true);
+    }//GEN-LAST:event_jPanel15MouseClicked
 
     /**
      * @param args the command line arguments
@@ -187,24 +354,64 @@ public class Homepage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Homepage().setVisible(true);
+              Loginpage loginPage = new Loginpage(); // Assuming you have a LoginPage class for logging in
+            loginPage.setVisible(true);
+
             }
         });
     }
+     public void setDataToCards() {
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+
+    try {
+        Connection con = ConnectionProvider.getCon();
+        // Use a PreparedStatement to prevent SQL injection
+        String query = "SELECT COUNT(*) FROM issue WHERE StudentID = ? AND Returned = 'NO'";
+        pstmt = con.prepareStatement(query);
+        pstmt.setString(1, studentId); // Set the student ID in the query
+
+        rs = pstmt.executeQuery();
+        
+        if (rs.next()) {
+            // Get the count of issued books
+            int issuedBooksCount = rs.getInt(1);
+            lbl_issuedBooks.setText(Integer.toString(issuedBooksCount));
+        } else {
+            lbl_issuedBooks.setText("0");
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        // Always close the resources
+        try {
+            if (rs != null) rs.close();
+            if (pstmt != null) pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private rojerusan.RSMaterialButtonRectangle borrow_books;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel7;
-    private rojerusan.RSMaterialButtonRectangle mybooks;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel lbl_issuedBooks;
+    private javax.swing.JLabel logoutbtn;
+    private rojerusan.RSMaterialButtonRectangle mybooks1;
     private rojerusan.RSMaterialButtonRectangle returnbook;
+    private javax.swing.JLabel stid;
     // End of variables declaration//GEN-END:variables
 }

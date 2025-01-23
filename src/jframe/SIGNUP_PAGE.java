@@ -4,6 +4,8 @@
  */
 package jframe;
 
+import AdminDashboard.adminloginpage;
+import Studentdashboard.Loginpage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -258,7 +260,7 @@ public class SIGNUP_PAGE extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 410, 560));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pexels-itfeelslikefilm-590493 (1).jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pexels-itfeelslikefilm-590493 (1).jpg"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(1600, 830));
         jLabel1.setMinimumSize(new java.awt.Dimension(1600, 830));
         jLabel1.setPreferredSize(new java.awt.Dimension(1600, 830));

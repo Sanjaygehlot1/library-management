@@ -4,9 +4,9 @@
  */
 package Studentdashboard;
 import java.sql.*;
-import Studentdashboard.ConnectionProvider;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
+import jframe.DBconnection;
 
 
 /**
@@ -14,13 +14,14 @@ import net.proteanit.sql.DbUtils;
  * @author dell
  */
 public class MyIssuedBooks extends javax.swing.JFrame {
-
+ private String studentId;
     /**
      * Creates new form MyIssuedBooks
      */
-  public MyIssuedBooks() {
+  public MyIssuedBooks(String studentId1) {
    
     initComponents();
+    this.studentId = studentId;
      setLocationRelativeTo(null);
     addComponentListener(new java.awt.event.ComponentAdapter() {
         @Override
@@ -47,8 +48,9 @@ public class MyIssuedBooks extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(400, 400));
-        setLocationByPlatform(true);
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setLocation(new java.awt.Point(0, 0));
+        setMinimumSize(new java.awt.Dimension(900, 500));
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -120,9 +122,9 @@ public class MyIssuedBooks extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(51, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Studentdashboard/bgm.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 500));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 580));
 
-        setBounds(0, 0, 793, 474);
+        setBounds(1500, 900, 844, 574);
     }// </editor-fold>//GEN-END:initComponents
 
     private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
@@ -138,20 +140,21 @@ public class MyIssuedBooks extends javax.swing.JFrame {
     
 
 
-
-    Connection con = null;
+ Connection con = null;
     Statement st = null;
     ResultSet rs = null;
 
     try {
-        con = ConnectionProvider.getCon();
+        con = DBconnection.getConnection();
         st = con.createStatement();
 
-        String studentID = "33"; 
-        String query = "SELECT issue.BookID, books.Name, issue.IssueDate, issue.Duedate " +
-                       "FROM issue " +
-                       "INNER JOIN books ON books.BookID = issue.BookID " +
-                       "WHERE issue.StudentID = '" + studentID + "' AND issue.Returned = 'NO'";
+        // Use the static studentId from the StudentDashboard
+        String studentID = Homepage.getStudentId(); 
+        String query =  "SELECT issue.BookID, books.Name, issue.IssueDate, issue.Duedate " +
+               "FROM issue " +
+               "INNER JOIN books ON books.BookID = issue.BookID " +
+               "WHERE issue.StudentID = '" + studentID + "' AND issue.Returned = 'NO'";
+
 
         rs = st.executeQuery(query);           
         myissued.setModel(DbUtils.resultSetToTableModel(rs));
@@ -202,7 +205,7 @@ public class MyIssuedBooks extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MyIssuedBooks().setVisible(true);
+                new MyIssuedBooks("36").setVisible(true);
             }
         });
     }

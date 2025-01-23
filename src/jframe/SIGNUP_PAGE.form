@@ -371,7 +371,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/pexels-itfeelslikefilm-590493 (1).jpg"/>
+          <Image iconType="3" name="/icons/pexels-itfeelslikefilm-590493 (1).jpg"/>
         </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1600, 830]"/>
